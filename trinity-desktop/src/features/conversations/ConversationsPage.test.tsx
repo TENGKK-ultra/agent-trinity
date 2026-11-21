@@ -154,11 +154,11 @@ describe('ConversationsPage', () => {
     mocks.getAgent.mockResolvedValue(agentState([]));
     mocks.listApprovals.mockResolvedValue({ items: [] });
     mocks.listMessages.mockResolvedValue({ items: [], total: 0, limit: 50, offset: 0 });
-    mocks.listWorkspaces.mockResolvedValue({ items: [], default_root: 'E:\\Trinity\\workspaces' });
+    mocks.listWorkspaces.mockResolvedValue({ items: [], default_root: 'D:\\Trinity\\workspaces' });
     mocks.createWorkspace.mockResolvedValue({
       id: 'ws-new',
       name: '新建工作区',
-      path: 'E:\\Trinity\\workspaces\\claude',
+      path: 'D:\\Trinity\\workspaces\\claude',
       created_at: '2026-11-21T00:00:00.000Z',
       updated_at: '2026-11-21T00:00:00.000Z',
     });
@@ -689,13 +689,13 @@ describe('ConversationsPage', () => {
 
   it('已绑定的 Agent 在控制栏显示自己的工作区', async () => {
     mocks.getAgent.mockResolvedValue(
-      agentState([{ agent: 'claude', active: true, cwd: 'E:\\ws\\claude' }], 'claude'),
+      agentState([{ agent: 'claude', active: true, cwd: 'D:\\ws\\claude' }], 'claude'),
     );
 
     renderPage();
 
     await screen.findByRole('button', { name: 'Claude Code · 当前使用' });
-    expect(screen.getByText('E:\\ws\\claude')).toBeTruthy();
+    expect(screen.getByText('D:\\ws\\claude')).toBeTruthy();
   });
 
   it('未绑定的 Agent 先选工作区，再带着目录绑定', async () => {
@@ -707,18 +707,18 @@ describe('ConversationsPage', () => {
         {
           id: 'ws-1',
           name: 'Codex 工作区',
-          path: 'E:\\ws\\codex',
+          path: 'D:\\ws\\codex',
           created_at: '2026-11-21T00:00:00.000Z',
           updated_at: '2026-11-21T00:00:00.000Z',
         },
       ],
-      default_root: 'E:\\Trinity\\workspaces',
+      default_root: 'D:\\Trinity\\workspaces',
     });
     mocks.bindAgent.mockResolvedValue(
       agentState(
         [
           { agent: 'claude', active: true },
-          { agent: 'codex', cwd: 'E:\\ws\\codex' },
+          { agent: 'codex', cwd: 'D:\\ws\\codex' },
         ],
         'claude',
       ),
@@ -736,12 +736,12 @@ describe('ConversationsPage', () => {
     await waitFor(() =>
       expect(mocks.bindAgent).toHaveBeenCalledWith('conv-a', {
         agent: 'codex',
-        cwd: 'E:\\ws\\codex',
+        cwd: 'D:\\ws\\codex',
         active: false,
       }),
     );
     await waitFor(() => expect(screen.queryByRole('dialog')).toBeNull());
-    expect(await screen.findByText('E:\\ws\\codex')).toBeTruthy();
+    expect(await screen.findByText('D:\\ws\\codex')).toBeTruthy();
   });
 
   it('可以新建工作区并直接绑定', async () => {
@@ -751,7 +751,7 @@ describe('ConversationsPage', () => {
     mocks.createWorkspace.mockResolvedValue({
       id: 'ws-9',
       name: '项目一',
-      path: 'E:\\work\\proj1',
+      path: 'D:\\work\\proj1',
       created_at: '2026-11-21T00:00:00.000Z',
       updated_at: '2026-11-21T00:00:00.000Z',
     });
@@ -759,7 +759,7 @@ describe('ConversationsPage', () => {
       agentState(
         [
           { agent: 'claude', active: true },
-          { agent: 'codex', cwd: 'E:\\work\\proj1' },
+          { agent: 'codex', cwd: 'D:\\work\\proj1' },
         ],
         'claude',
       ),
@@ -775,19 +775,19 @@ describe('ConversationsPage', () => {
     );
 
     fireEvent.change(screen.getByLabelText('工作区名称'), { target: { value: '项目一' } });
-    fireEvent.change(screen.getByLabelText('工作区目录'), { target: { value: 'E:\\work\\proj1' } });
+    fireEvent.change(screen.getByLabelText('工作区目录'), { target: { value: 'D:\\work\\proj1' } });
     fireEvent.click(screen.getByRole('button', { name: '新建并选择' }));
 
     await waitFor(() =>
       expect(mocks.createWorkspace).toHaveBeenCalledWith({
         name: '项目一',
-        path: 'E:\\work\\proj1',
+        path: 'D:\\work\\proj1',
       }),
     );
     await waitFor(() =>
       expect(mocks.bindAgent).toHaveBeenCalledWith('conv-a', {
         agent: 'codex',
-        cwd: 'E:\\work\\proj1',
+        cwd: 'D:\\work\\proj1',
         active: false,
       }),
     );
@@ -802,18 +802,18 @@ describe('ConversationsPage', () => {
         {
           id: 'ws-codex',
           name: 'Codex 工作区',
-          path: 'E:\\Trinity\\workspaces\\codex',
+          path: 'D:\\Trinity\\workspaces\\codex',
           created_at: '2026-11-21T00:00:00.000Z',
           updated_at: '2026-11-21T00:00:00.000Z',
         },
       ],
-      default_root: 'E:\\Trinity\\workspaces',
+      default_root: 'D:\\Trinity\\workspaces',
     });
     mocks.bindAgent.mockResolvedValue(
       agentState(
         [
           { agent: 'claude', active: true },
-          { agent: 'codex', cwd: 'E:\\Trinity\\workspaces\\codex' },
+          { agent: 'codex', cwd: 'D:\\Trinity\\workspaces\\codex' },
         ],
         'claude',
       ),
@@ -826,11 +826,11 @@ describe('ConversationsPage', () => {
     await waitFor(() =>
       expect(mocks.bindAgent).toHaveBeenCalledWith('conv-a', {
         agent: 'codex',
-        cwd: 'E:\\Trinity\\workspaces\\codex',
+        cwd: 'D:\\Trinity\\workspaces\\codex',
         active: false,
       }),
     );
     expect(screen.queryByRole('dialog')).toBeNull();
-    expect(await screen.findByText('E:\\Trinity\\workspaces\\codex')).toBeTruthy();
+    expect(await screen.findByText('D:\\Trinity\\workspaces\\codex')).toBeTruthy();
   });
 });
