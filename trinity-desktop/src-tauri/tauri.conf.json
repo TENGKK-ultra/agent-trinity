@@ -1,0 +1,44 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+  "productName": "Trinity",
+  "version": "0.2.0",
+  "identifier": "com.trinity.desktop",
+  "build": {
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:5173",
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "Trinity",
+        "width": 1280,
+        "height": 860,
+        "minWidth": 1100,
+        "minHeight": 700,
+        "resizable": true,
+        "center": true,
+        "decorations": false,
+        "fullscreen": false,
+        "visible": false,
+        "backgroundColor": "#04060d"
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  }
+}

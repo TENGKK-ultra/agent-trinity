@@ -1,0 +1,19 @@
+{
+  "name": "trinity-core",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "Trinity independent conversation engine (Phase 1)",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "start": "node src/main.ts",
+    "test": "node --test tests/run.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.8.0"
+  }
+}

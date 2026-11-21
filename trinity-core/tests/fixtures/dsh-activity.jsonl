@@ -1,0 +1,4 @@
+{"type":"tool_call","callId":"call_00_ET_wYBMnGDFvJj2NsZcE4oh0971","tool":"read","input":{"file_path":"tests/fixtures/fake.txt"}}
+{"type":"tool_result","callId":"call_00_ET_wYBMnGDFvJj2NsZcE4oh0971","status":"completed","result":"<path>tests/fixtures/fake.txt</path>\n<type>file</type>\n1: DSH_PROBE_OK"}
+{"type":"tool_result","callId":"call_00_ET_MBE1jQZCukY2fI5hG7Ko0928","status":"error","result":"Error: cannot read","error":{"name":"FsError","code":"FS_NOT_FOUND"}}
+{"type":"status","phase":"step_end","turn":1,"step":1,"usage":{"inputTokens":666,"outputTokens":68,"cacheReadTokens":5760,"cacheWriteTokens":0,"totalTokens":6494}}

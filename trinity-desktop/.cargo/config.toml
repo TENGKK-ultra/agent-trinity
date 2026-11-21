@@ -1,0 +1,9 @@
+# 国内 crates 镜像（仅作用于本工程，不修改全局 cargo 配置）
+[source.crates-io]
+replace-with = "ustc"
+
+[source.ustc]
+registry = "sparse+https://mirrors.ustc.edu.cn/crates.io-index/"
+
+[net]
+git-fetch-with-cli = true
