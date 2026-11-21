@@ -155,6 +155,11 @@ known gap.
 Tests: `npm test` in `trinity-core` (449) and in `trinity-desktop` (103).
 Expect rough edges — this is an early project, not a finished product.
 
+## Author
+
+Built by [**@ultraT666**](https://x.com/ultraT666) on X.
+Questions, bug reports and opinions are all welcome there.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
